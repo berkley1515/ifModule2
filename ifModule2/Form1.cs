@@ -28,26 +28,14 @@ namespace ifModule2
 
             Color shapeColor = Color.White; //set white to hold value (otherwise pen/brush gets mad)
 
-            //graphics
-            Graphics sG = this.CreateGraphics();//graphics (AKA. Black Magic!)  (ﾉ◕ヮ◕)⊃━☆*:･ﾟ.* ･｡ﾟ✧
-
-            //pen & brush
-            Pen shapePen = new Pen(shapeColor, 10);
-            SolidBrush shapeBrush = new SolidBrush(shapeColor);
-
             //colour
             if (color == "R" | color == "r")
             {
-                //clearing possible past drawings
-                sG.Clear(shapeColor);
-
                 //set pen/brush colour
                 shapeColor = Color.Red;
             }
             else if (color == "G" | color == "g")
             {
-                //clearing possible past drawings
-                sG.Clear(shapeColor);
 
                 //set pen/brush colour
                 shapeColor = Color.Green;
@@ -56,29 +44,33 @@ namespace ifModule2
             {
                 //error! (set value to null)
                 colorInput.Text = null;
-
-                //clearing possible past drawings
-                sG.Clear(shapeColor);
-
             }
-          
+
+            //graphics
+            Graphics sG = this.CreateGraphics();//graphics (AKA. Black Magic!)  (ﾉ◕ヮ◕)⊃━☆*:･ﾟ.* ･｡ﾟ✧
+
+            //pen & brush
+            Pen shapePen = new Pen(shapeColor, 10);
+            SolidBrush shapeBrushCover = new SolidBrush(Color.DeepSkyBlue);
+
+            
+
             //shape
             if (shape == "C" | shape == "c" | shape == "Circle" | shape == "circle")
             {
-                //clearing possible past drawings
-                sG.Clear(shapeColor);
+                //coving up possible past drawings
+                sG.FillRectangle(shapeBrushCover, 120, 200, 220, 120);//drawing rectangle
 
                 //drawing circle   
                 sG.DrawEllipse(shapePen, 130, 210, 100, 100);//drawing circle
             }
             else if (shape == "R" | shape == "r" | shape == "Rectangle" | shape == "rectangle")
             {
-                //clearing possible past drawings
-                sG.Clear(shapeColor);
+                //coving up possible past drawings
+                sG.FillRectangle(shapeBrushCover, 120, 200, 220, 120);//drawing rectangle
 
                 //drawing circle   
                 sG.DrawRectangle(shapePen, 130, 210, 200, 100);//drawing rectangle
-
             }
         }
     }
